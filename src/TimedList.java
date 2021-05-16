@@ -22,7 +22,7 @@ public class TimedList<T> {
 		time.clear();
 	}
 
-	public boolean contains(String e) {
+	public boolean contains(T e) {
 		for (int i = innerList.size()-1; i >= 0; i--) {
 			if (System.currentTimeMillis()-time.get(i) < expiryTime) {
 				if (innerList.get(i).equals(e)) {
