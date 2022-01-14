@@ -25,6 +25,7 @@ public class TimedList<T> {
 	public synchronized void clear() {
 		try {
 			if (innerList.size() != 0  && System.currentTimeMillis()-lastClean > cleanInterval) {
+				this.lastClean = System.currentTimeMillis();
 				ArrayList<T> newInnerList = new ArrayList<T>(innerList);
 				ArrayList<Long> newTimeList = new ArrayList<Long>(timeList);
 				while(newTimeList.size() != 0 && System.currentTimeMillis()-newTimeList.get(0) <= expiryTime) {
