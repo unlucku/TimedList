@@ -24,10 +24,10 @@ public class TimedList<T> {
 
 	public synchronized void clear() {
 		try {
-			if (innerList.size() != 0 && System.currentTimeMillis()-lastClean > cleanInterval) {
+			if (innerList.size() != 0  && System.currentTimeMillis()-lastClean > cleanInterval) {
 				ArrayList<T> newInnerList = new ArrayList<T>(innerList);
 				ArrayList<Long> newTimeList = new ArrayList<Long>(timeList);
-				while(innerList.size() != 0 && System.currentTimeMillis()-newTimeList.get(0) <= expiryTime) {
+				while(newTimeList.size() != 0 && System.currentTimeMillis()-newTimeList.get(0) <= expiryTime) {
 					newInnerList.remove(0);
 					newTimeList.remove(0);
 				}
